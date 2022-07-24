@@ -35,7 +35,10 @@ const ALLOWED_TYPE = {
       oInfo.innerText = UPLOAD_INFO['INVALID_TYPE']
       return;
     }
-    const { name, size, type } = file
+    const { name, size, type } = file // 解构出文件名称，大小，类型
+    oProgress.max = size;
+    oInfo.innerText = '';
+
   }
 
   init();
