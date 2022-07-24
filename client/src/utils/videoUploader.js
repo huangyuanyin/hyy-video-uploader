@@ -36,6 +36,37 @@ import { UPLOAD_INFO, ALLOWED_TYPE, CHUNK_SIZE } from './config'
     oProgress.max = size;
     oInfo.innerText = '';
 
+    while (uploadedSize < size) {
+      const fileChunk = file.size(uploadedSize, uploadedSize + CHUNK_SIZE)
+      const formData = createFormDate({
+        name,
+        type,
+        size
+        fileName,
+        uploadedSize,
+        file: fileChunk
+      })
+    }
+
+  }
+
+  function createFormDate({
+    name,
+    type,
+    size
+    fileName,
+    uploadedSize,
+    file
+  }) {
+    const fd = new FormData()
+    fd.append('name', name)
+    fd.append('type', type)
+    fd.append('size', size)
+    fd.append('fileName', fileName)
+    fd.append('uploadedSize', uploadedSize)
+    fd.append('file', file)
+
+    return fd;
   }
 
   init();
