@@ -34,13 +34,13 @@ import { UPLOAD_INFO, ALLOWED_TYPE, CHUNK_SIZE, API } from "./config";
     const { name, size, type } = file; // 解构出文件名称，大小，类型
 
     const fileName = new Date().getTime() + "_" + name; // 切出来的文件名
-    const uploadedResult = {};
+    let uploadedResult = null;
 
     oProgress.max = size;
     oInfo.innerText = "";
 
     while (uploadedSize < size) {
-      const fileChunk = file.size(uploadedSize, uploadedSize + CHUNK_SIZE);
+      const fileChunk = file.slice(uploadedSize, uploadedSize + CHUNK_SIZE);
       const formData = createFormDate({
         name,
         type,
@@ -53,6 +53,7 @@ import { UPLOAD_INFO, ALLOWED_TYPE, CHUNK_SIZE, API } from "./config";
         uploadedResult = await axios.post(API.UPLOAD_VIDEO, formData);
       } catch (error) {
         oInfo.innerText = `${UPLOAD_INFO["UPLOAD_FAILED"]}(${error.message})`;
+        console.log("aaaaa");
         return;
       }
       uploadedSize += fileChunk.size;

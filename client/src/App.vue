@@ -1,6 +1,6 @@
 <template>
   <p>
-    <progress id="uploaderProgress" value="2" max="100"></progress>
+    <progress id="uploaderProgress" value="0" max="100"></progress>
   </p>
   <p>
     <input type="file" id="videoUploader" value="" />

@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:8000";
+const BASE_URL = "http://localhost:8000/";
 
 export const UPLOAD_INFO = {
   NO_FILE: "请先选择文件",
