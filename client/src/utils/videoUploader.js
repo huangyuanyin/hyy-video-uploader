@@ -53,7 +53,6 @@ import { UPLOAD_INFO, ALLOWED_TYPE, CHUNK_SIZE, API } from "./config";
         uploadedResult = await axios.post(API.UPLOAD_VIDEO, formData);
       } catch (error) {
         oInfo.innerText = `${UPLOAD_INFO["UPLOAD_FAILED"]}(${error.message})`;
-        console.log("aaaaa");
         return;
       }
       uploadedSize += fileChunk.size;
